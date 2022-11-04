@@ -18,7 +18,8 @@ public class CourseWork {
         System.out.println("Сумма всех заплат сотрудников " + calculateSumSalary());
         System.out.println("Сотрудник с максимальной зарплатой - " + getEmployeeWithMaxSalary());
         System.out.println("Сотрудник с минимальной зарплатой - " + getEmployeeWithMinSalary());
-
+        System.out.println(employeesList());
+        System.out.println("Средняя зарплата сотрудников: " + calculateAverageSalary());
         }
     public static int calculateSumSalary(){
         int sum = 0;
@@ -54,19 +55,17 @@ public class CourseWork {
         }
         return targetEmployee;
     }
-    public static void employeesList() {
+    public static String employeesList() {
         for (Employee employee : employees) {
-            System.out.println(employee.getSurname() + employee.getName() + employee.getPatronymic());
+            System.out.println(employee.getSurname() + " " + employee.getName() + " " + employee.getPatronymic());
         }
 
+        return null;
     }
-//    public static int calculateAverageSalary(){
-//        int avSalary = calculateSumSalary() /  employees.length;
-//        return "Средняя зарплата сотрудников - " + avSalary;
-//    }
-//    public static void calculateAverageSalary(){
-//        int avSalary = calculateSumSalary() /  employees.length;
-//        System.out.println("Средняя зарплата сотрудников - " + avSalary);
-//    }
+    public static int calculateAverageSalary(){
+        int avSalary = calculateSumSalary() / employees.length;
+        return avSalary;
+    }
+
 
 }
