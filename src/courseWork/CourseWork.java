@@ -23,7 +23,11 @@ public class CourseWork {
         indexSalary();
         System.out.println("Сотрудник с минимальной зарплатой в 1 отделе - " + getEmployeeWithMinSalaryInDepartment());
         System.out.println("Сотрудник с максимальной зарплатой в 1 отделе - " + getEmployeeWithMaxSalaryInDepartment());
-        }
+        System.out.println("Сумма заплат в 1 отделе равна - " + departmentSumSalary());
+        System.out.println("Средняя заплата в 1 отделе равна - " + averageDepartmentSalary());
+
+
+    }
     public static int calculateSumSalary(){
         int sum = 0;
         for(Employee employee : employees){
@@ -106,7 +110,37 @@ public class CourseWork {
             }
         }
         return targetDepartmentEmployee;
+    }
 
 
+    public static int departmentSumSalary(){
+        int sum = 0;
+        int department = 1;
+        for(Employee employee : employees){
+            if (employee != null && employee.getDepartment() == department){
+                sum += employee.getSalary();
+            }
+        }
+        return sum;
+    }
+    public static int averageDepartmentSalary(){
+        int department = 1;
+        int avSalary = 0;
+        for(Employee employee : employees){
+            if(employee != null && department == employee.getDepartment()){
+                avSalary = departmentSumSalary() / numberOfEmployeesInDepartment();
+            }
+        }
+        return avSalary;
+    }
+    public static int numberOfEmployeesInDepartment(){
+        int department = 1;
+        int numberOfPeople = 0;
+        for (Employee employee : employees){
+            if(employee != null && department == employee.getDepartment()){
+             numberOfPeople++;
+            }
+        }
+        return numberOfPeople;
     }
 }
