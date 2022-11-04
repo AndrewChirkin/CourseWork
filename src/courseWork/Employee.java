@@ -7,6 +7,8 @@ public class Employee {
     private int department;
     private int salary;
     private String fullName;
+    private final int id;
+    private static int counter = 0;
 
     public Employee(String surname, String name, String patronymic, int department, int salary) {
         this.surname = surname;
@@ -14,7 +16,12 @@ public class Employee {
         this.patronymic = patronymic;
         this.department = department;
         this.salary = salary;
+        this.id = counter++;
+        this.fullName = surname + " " + name + " " + patronymic;
     }
+
+//    private String setFullName() {
+//    return surname + name;}
 
     public String getSurname() {
         return this.surname;
@@ -51,15 +58,20 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String toString(){
-        return "Сотрудник - " + fullName + "\nЗарплата - " + salary;
-    }
+
 
     public String getFullName() {
-        return fullName;
+        return surname + " " + name + " " + patronymic;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = surname + " " + name + " " + patronymic;
+    public String setFullName() {
+        return surname + " " + name + " " + patronymic;
+    }
+    public String toString(){
+        return "Сотрудник - " + getFullName() + "\nЗарплата - " + salary + "\nid: " + getId();
+    }
+
+    public int getId(){
+        return id;
     }
 }
