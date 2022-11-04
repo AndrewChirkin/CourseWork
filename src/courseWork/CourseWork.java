@@ -60,7 +60,7 @@ public class CourseWork {
             System.out.println(employee.getSurname() + " " + employee.getName() + " " + employee.getPatronymic());
         }
 
-        return null;
+        return "_______________";
     }
     public static int calculateAverageSalary(){
         int avSalary = calculateSumSalary() / employees.length;
