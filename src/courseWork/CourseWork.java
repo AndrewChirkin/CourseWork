@@ -26,6 +26,7 @@ public class CourseWork {
         System.out.println("Сумма заплат в 1 отделе равна - " + departmentSumSalary());
         System.out.println("Средняя заплата в 1 отделе равна - " + averageDepartmentSalary());
         indexSalaryInDepartment(8,1);
+        printDepartmentEmployees(3);
 
     }
     public static int calculateSumSalary(){
@@ -151,6 +152,13 @@ public class CourseWork {
                 indexedSalary = (double) employee.getSalary() * (index / 100 + 1);
                 String result = String.format("%.2f",indexedSalary);
                 System.out.println("Сотрудник " + employee.getFullName() + " будет иметь зарплату " + result + " после индексирования.");
+            }
+        }
+    }
+    public static void printDepartmentEmployees(int department){
+        for (Employee employee : employees){
+            if(employee != null && department == employee.getDepartment()){
+                System.out.println(employee.getFullName() + " , зарплата - " + employee.getSalary() + " рублей." );
             }
         }
     }
