@@ -69,7 +69,7 @@ public class Employee {
         return surname + " " + name + " " + patronymic;
     }
     public String toString(){
-        return "Сотрудник - " + getFullName() + "\nЗарплата - " + salary + "\nid: " + getId() + ", Отдел: " + getDepartment();
+        return getFullName() + "\nЗарплата - " + salary + "\nid: " + getId() + ", Отдел: " + getDepartment();
     }
 
     public int getId(){
