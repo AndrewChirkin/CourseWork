@@ -20,12 +20,12 @@ public class CourseWork {
         System.out.println("Сотрудник с минимальной зарплатой - " + getEmployeeWithMinSalary());
         System.out.println(employeesList());
         System.out.println("Средняя зарплата сотрудников: " + calculateAverageSalary());
-        indexSalary();
+        indexSalary(4);
         System.out.println("Сотрудник с минимальной зарплатой в 1 отделе - " + getEmployeeWithMinSalaryInDepartment());
         System.out.println("Сотрудник с максимальной зарплатой в 1 отделе - " + getEmployeeWithMaxSalaryInDepartment());
         System.out.println("Сумма заплат в 1 отделе равна - " + departmentSumSalary());
         System.out.println("Средняя заплата в 1 отделе равна - " + averageDepartmentSalary());
-
+        indexSalaryInDepartment(8,1);
 
     }
     public static int calculateSumSalary(){
@@ -69,8 +69,8 @@ public class CourseWork {
 
         return "________________";
     }
-    public static void indexSalary(){
-        double index = 4;
+    public static void indexSalary(double index){
+
         double indexedSalary = 0;
         for(Employee employee : employees) {
             indexedSalary = (double) employee.getSalary() * (index / 100 + 1);
@@ -142,5 +142,16 @@ public class CourseWork {
             }
         }
         return numberOfPeople;
+    }
+    public static void indexSalaryInDepartment(double index, int department){
+
+        double indexedSalary = 0;
+        for (Employee employee : employees){
+            if(employee != null && department == employee.getDepartment()){
+                indexedSalary = (double) employee.getSalary() * (index / 100 + 1);
+                String result = String.format("%.2f",indexedSalary);
+                System.out.println("Сотрудник " + employee.getFullName() + " будет иметь зарплату " + result + " после индексирования.");
+            }
+        }
     }
 }
