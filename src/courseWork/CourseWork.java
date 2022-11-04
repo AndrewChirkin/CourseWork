@@ -20,6 +20,7 @@ public class CourseWork {
         System.out.println("Сотрудник с минимальной зарплатой - " + getEmployeeWithMinSalary());
         System.out.println(employeesList());
         System.out.println("Средняя зарплата сотрудников: " + calculateAverageSalary());
+        indexSalary();
         }
     public static int calculateSumSalary(){
         int sum = 0;
@@ -57,11 +58,23 @@ public class CourseWork {
     }
     public static String employeesList() {
         for (Employee employee : employees) {
-            System.out.println(employee.getSurname() + " " + employee.getName() + " " + employee.getPatronymic());
+            System.out.println(employee.getFullName());
         }
 
-        return "_______________";
+        return "________________";
     }
+    public static void indexSalary(){
+        double index = 4;
+        double indexedSalary = 0;
+        for(Employee employee : employees) {
+            indexedSalary = (double) employee.getSalary() * (index / 100 + 1);
+            String result = String.format("%.2f",indexedSalary);
+            System.out.println("Сотрудник " + employee.getFullName() + " будет иметь зарплату " + result + " после индексирования.");
+
+        }
+
+    }
+
     public static int calculateAverageSalary(){
         int avSalary = calculateSumSalary() / employees.length;
         return avSalary;

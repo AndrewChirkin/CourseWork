@@ -10,6 +10,7 @@ public class Employee {
     private final int id;
     private static int counter = 0;
 
+
     public Employee(String surname, String name, String patronymic, int department, int salary) {
         this.surname = surname;
         this.name = name;
@@ -18,10 +19,10 @@ public class Employee {
         this.salary = salary;
         this.id = counter++;
         this.fullName = surname + " " + name + " " + patronymic;
+
     }
 
-//    private String setFullName() {
-//    return surname + name;}
+
 
     public String getSurname() {
         return this.surname;
@@ -68,10 +69,11 @@ public class Employee {
         return surname + " " + name + " " + patronymic;
     }
     public String toString(){
-        return "Сотрудник - " + getFullName() + "\nЗарплата - " + salary + "\nid: " + getId();
+        return "Сотрудник - " + getFullName() + "\nЗарплата - " + salary + "\nid: " + getId() + ", Отдел: " + getDepartment();
     }
 
     public int getId(){
         return id;
     }
+
 }
