@@ -21,7 +21,8 @@ public class CourseWork {
         System.out.println(employeesList());
         System.out.println("Средняя зарплата сотрудников: " + calculateAverageSalary());
         indexSalary();
-        System.out.println("Сотрудник с минимальной зарплатой в 1 отделе- " + getEmployeeWithMinSalaryInDepartment());
+        System.out.println("Сотрудник с минимальной зарплатой в 1 отделе - " + getEmployeeWithMinSalaryInDepartment());
+        System.out.println("Сотрудник с максимальной зарплатой в 1 отделе - " + getEmployeeWithMaxSalaryInDepartment());
         }
     public static int calculateSumSalary(){
         int sum = 0;
@@ -92,5 +93,20 @@ public class CourseWork {
             }
         }
         return targetDepartmentEmployee;
+    }
+    public static Employee getEmployeeWithMaxSalaryInDepartment() {
+        int max = Integer.MIN_VALUE;
+        Employee targetDepartmentEmployee = null;
+        int department = 1;
+        for (Employee employee : employees) {
+            if (employee != null && employee.getSalary() > max && employee.getDepartment() == department) {
+                max = employee.getSalary();
+                targetDepartmentEmployee = employee;
+
+            }
+        }
+        return targetDepartmentEmployee;
+
+
     }
 }
