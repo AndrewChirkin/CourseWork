@@ -9,6 +9,7 @@ public class Employee {
     private String fullName;
     private final int id;
     private static int counter = 0;
+    private int index = 7;
 
 
     public Employee(String surname, String name, String patronymic, int department, int salary) {
@@ -56,7 +57,7 @@ public class Employee {
     }
 
     public void setSalary(int salary) {
-        this.salary = salary;
+        this.salary = salary * index / 100;
     }
 
 

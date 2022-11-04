@@ -27,6 +27,8 @@ public class CourseWork {
         System.out.println("Средняя заплата в 1 отделе равна - " + averageDepartmentSalary());
         indexSalaryInDepartment(8,1);
         printDepartmentEmployees(3);
+        employeesWithSalaryLessThanNumber(1500);
+        employeesWithSalaryMoreThanNumber(2000);
 
     }
     public static int calculateSumSalary(){
@@ -159,6 +161,24 @@ public class CourseWork {
         for (Employee employee : employees){
             if(employee != null && department == employee.getDepartment()){
                 System.out.println(employee.getFullName() + " , зарплата - " + employee.getSalary() + " рублей." );
+            }
+        }
+    }
+    public static void employeesWithSalaryLessThanNumber(int number){
+        System.out.println("Сотрудники, зарплата которых меньше числа " + number);
+        for (Employee employee : employees){
+            if (employee != null && employee.getSalary() < number){
+
+                System.out.println(employee.getId() + " - " + employee.getFullName() + " " + employee.getSalary());
+            }
+        }
+    }
+    public static void employeesWithSalaryMoreThanNumber(int number){
+        System.out.println("Сотрудники, зарплата которых больше или равна числу " + number);
+        for (Employee employee : employees){
+            if (employee != null && employee.getSalary() >= number){
+
+                System.out.println(employee.getId() + " - " + employee.getFullName() + " " + employee.getSalary());
             }
         }
     }
