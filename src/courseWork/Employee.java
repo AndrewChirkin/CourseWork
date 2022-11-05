@@ -5,11 +5,10 @@ public class Employee {
     private String name;
     private String patronymic;
     private int department;
-    private int salary;
+    private double salary;
     private String fullName;
     private final int id;
     private static int counter = 0;
-    private int index = 7;
 
 
     public Employee(String surname, String name, String patronymic, int department, int salary) {
@@ -52,12 +51,12 @@ public class Employee {
         this.department = department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary * index / 100;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
 
@@ -75,6 +74,9 @@ public class Employee {
 
     public int getId(){
         return id;
+    }
+    public int getCounter(){
+        return counter;
     }
 
 }

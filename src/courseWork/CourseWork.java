@@ -18,21 +18,21 @@ public class CourseWork {
         System.out.println("Сумма всех заплат сотрудников " + calculateSumSalary());
         System.out.println("Сотрудник с максимальной зарплатой - " + getEmployeeWithMaxSalary());
         System.out.println("Сотрудник с минимальной зарплатой - " + getEmployeeWithMinSalary());
-        System.out.println(employeesList());
+        printAllEmmlpoyees();
         System.out.println("Средняя зарплата сотрудников: " + calculateAverageSalary());
         indexSalary(4);
-        System.out.println("Сотрудник с минимальной зарплатой в 1 отделе - " + getEmployeeWithMinSalaryInDepartment());
-        System.out.println("Сотрудник с максимальной зарплатой в 1 отделе - " + getEmployeeWithMaxSalaryInDepartment());
-        System.out.println("Сумма заплат в 1 отделе равна - " + departmentSumSalary());
-        System.out.println("Средняя заплата в 1 отделе равна - " + averageDepartmentSalary());
+        System.out.println("Сотрудник с минимальной зарплатой в 1 отделе - " + getEmployeeWithMinSalaryInDepartment(2));
+        System.out.println("Сотрудник с максимальной зарплатой в 1 отделе - " + getEmployeeWithMaxSalaryInDepartment(3));
+        System.out.println("Сумма заплат в 1 отделе равна - " + departmentSumSalary(1));
+        System.out.println("Средняя заплата в 1 отделе равна - " + averageDepartmentSalary(1));
         indexSalaryInDepartment(8,1);
         printDepartmentEmployees(3);
         employeesWithSalaryLessThanNumber(1500);
         employeesWithSalaryMoreThanNumber(2000);
 
     }
-    public static int calculateSumSalary(){
-        int sum = 0;
+    public static double calculateSumSalary(){
+        double sum = 0;
         for(Employee employee : employees){
             if (employee != null){
                 sum += employee.getSalary();
@@ -41,7 +41,7 @@ public class CourseWork {
         return sum;
     }
     public static Employee getEmployeeWithMaxSalary(){
-        int max = Integer.MIN_VALUE;
+        double max = Integer.MIN_VALUE;
         Employee targetEmployee = null;
         for(Employee employee : employees){
             if(employee != null && employee.getSalary() > max){
@@ -54,7 +54,7 @@ public class CourseWork {
     }
 
     public static Employee getEmployeeWithMinSalary(){
-        int min = Integer.MAX_VALUE;
+        double min = Integer.MAX_VALUE;
         Employee targetEmployee = null;
         for(Employee employee : employees){
             if(employee != null && employee.getSalary() < min){
@@ -65,18 +65,18 @@ public class CourseWork {
         }
         return targetEmployee;
     }
-    public static String employeesList() {
+    public static void printAllEmmlpoyees() {
         for (Employee employee : employees) {
             System.out.println(employee.getFullName());
         }
 
-        return "________________";
     }
     public static void indexSalary(double index){
 
         double indexedSalary = 0;
         for(Employee employee : employees) {
             indexedSalary = (double) employee.getSalary() * (index / 100 + 1);
+            employee.setSalary(indexedSalary);
             String result = String.format("%.2f",indexedSalary);
             System.out.println("Сотрудник " + employee.getFullName() + " будет иметь зарплату " + result + " после индексирования.");
 
@@ -84,14 +84,17 @@ public class CourseWork {
 
     }
 
-    public static int calculateAverageSalary(){
-        int avSalary = calculateSumSalary() / employees.length;
+    public static double calculateAverageSalary(){
+        int numberOfEmployees = 0;
+        for(Employee employee : employees){
+            numberOfEmployees++;
+        }
+        double avSalary = calculateSumSalary() / numberOfEmployees;
         return avSalary;
     }
-    public static Employee getEmployeeWithMinSalaryInDepartment() {
-        int min = Integer.MAX_VALUE;
+    public static Employee getEmployeeWithMinSalaryInDepartment(int department) {
+        double min = Integer.MAX_VALUE;
         Employee targetDepartmentEmployee = null;
-        int department = 1;
         for (Employee employee : employees) {
             if (employee != null && employee.getSalary() < min && employee.getDepartment() == department) {
                 min = employee.getSalary();
@@ -101,10 +104,9 @@ public class CourseWork {
         }
         return targetDepartmentEmployee;
     }
-    public static Employee getEmployeeWithMaxSalaryInDepartment() {
-        int max = Integer.MIN_VALUE;
+    public static Employee getEmployeeWithMaxSalaryInDepartment(int department) {
+        double max = Integer.MIN_VALUE;
         Employee targetDepartmentEmployee = null;
-        int department = 1;
         for (Employee employee : employees) {
             if (employee != null && employee.getSalary() > max && employee.getDepartment() == department) {
                 max = employee.getSalary();
@@ -116,9 +118,8 @@ public class CourseWork {
     }
 
 
-    public static int departmentSumSalary(){
-        int sum = 0;
-        int department = 1;
+    public static double departmentSumSalary(int department){
+        double sum = 0;
         for(Employee employee : employees){
             if (employee != null && employee.getDepartment() == department){
                 sum += employee.getSalary();
@@ -126,18 +127,10 @@ public class CourseWork {
         }
         return sum;
     }
-    public static int averageDepartmentSalary(){
-        int department = 1;
-        int avSalary = 0;
-        for(Employee employee : employees){
-            if(employee != null && department == employee.getDepartment()){
-                avSalary = departmentSumSalary() / numberOfEmployeesInDepartment();
-            }
-        }
-        return avSalary;
+    public static double averageDepartmentSalary(int department){
+        return departmentSumSalary(1) / numberOfEmployeesInDepartment(1);
     }
-    public static int numberOfEmployeesInDepartment(){
-        int department = 1;
+    public static int numberOfEmployeesInDepartment(int department){
         int numberOfPeople = 0;
         for (Employee employee : employees){
             if(employee != null && department == employee.getDepartment()){
