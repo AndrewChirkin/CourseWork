@@ -87,7 +87,9 @@ public class CourseWork {
     public static double calculateAverageSalary(){
         int numberOfEmployees = 0;
         for(Employee employee : employees){
+            if (employee != null){
             numberOfEmployees++;
+            }
         }
         double avSalary = calculateSumSalary() / numberOfEmployees;
         return avSalary;
